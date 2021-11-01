@@ -1,0 +1,21 @@
+{
+    "name": "ping-pong-game",
+    "version": "1.0.0",
+    "description": "A JavaScript ES6 playground in form of a simple ping-pong game (just for fun)",
+    "main": "rollup.config.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "rollup -c",
+        "lint": "npx eslint src"
+    },
+    "keywords": [],
+    "author": "Maxim Bîrcu",
+    "license": "Apache 2.0",
+    "devDependencies": {
+        "eslint": "^8.1.0",
+        "eslint-config-google": "^0.14.0",
+        "rollup": "^2.59.0",
+        "rollup-plugin-scss": "^3.0.0",
+        "sass": "^1.43.4"
+    }
+}
