@@ -8,7 +8,7 @@ export default {
     },
     plugins: [
         scss({
-            output: 'dest/styles/main.bundle.styles',
+            output: 'dest/css/main.bundle.css',
             failOnError: true,
         }),
     ],

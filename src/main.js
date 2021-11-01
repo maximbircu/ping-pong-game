@@ -1,3 +1,10 @@
-import './styles/main.sass'
+import './styles/main.scss'
+import {Game} from './Game'
+import {SceneSize} from './core/SceneSize'
 
-console.log('Ping Pong!')
+const settings = {
+    canvasContainerId: 'game-canvas',
+    sceneSize: new SceneSize(700, 600),
+}
+const game = new Game(settings)
+game.start()
