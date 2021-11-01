@@ -1,4 +1,4 @@
-import './styles/main.scss'
+import '../styles/main.scss'
 import {Game} from './Game'
 import {SceneSize} from './core/SceneSize'
 
