@@ -6,7 +6,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "rollup -c",
-        "lint": "npx eslint src"
+        "lint": "npx eslint src",
+        "clean": "rm -r dest",
+        "dev": "rollup -c --watch"
     },
     "keywords": [],
     "author": "Maxim Bîrcu",
