@@ -1,5 +1,6 @@
-import {Direction} from '../core/Direction';
-import {GameObject} from '../core/GameObject';
+import {Direction} from '../core/Direction'
+import {GameObject} from '../core/GameObject'
+import {BoundingBox} from '../core/colliders/BoundingBox'
 
 export class Racket extends GameObject {
     width = 20
@@ -14,6 +15,7 @@ export class Racket extends GameObject {
         super()
         this.#sceneSize = sceneSize
         this.position = position
+        this.boundingBox = new BoundingBox(this.width, this.height)
         this.setup()
     }
 
@@ -29,6 +31,6 @@ export class Racket extends GameObject {
 
     render(context) {
         context.fillStyle = '#000'
-        context.fillRect(this.x, this.y, this.width, this.height);
+        context.fillRect(this.x, this.y, this.width, this.height)
     }
 }

@@ -1,28 +1,30 @@
-import {Direction} from '../core/Direction'
+import {Direction} from '../../core/Direction'
+import {BoxCollider} from '../../core/colliders/BoxColider'
 
 export class BallCollider {
     #ball
     #rackets
     #sceneSize
+    #soundsPlayer
     #onOutFromTable
 
-    constructor(ball, sceneSize, rackets, onOutFromTable) {
+    constructor(ball, sceneSize, soundsPlayer, rackets, onOutFromTable) {
         this.#ball = ball
         this.#sceneSize = sceneSize
+        this.#soundsPlayer = soundsPlayer
         this.#rackets = rackets
         this.#onOutFromTable = onOutFromTable
     }
 
-
     update() {
         this.#checkWallsCollision()
         this.#checkRacketCollision()
-        this.#checkTableExitCollision()
+        this.#checkTableExit()
     }
 
     #checkRacketCollision() {
         this.#rackets.forEach((racket) => {
-            if (this.#collidesWithRacket(racket)) {
+            if (BoxCollider.collides(racket, this.#ball)) {
                 this.#onRacketCollision(racket)
             }
         })
@@ -37,20 +39,10 @@ export class BallCollider {
 
         this.#ball.velocity.x = smash * direction * this.#ball.speed * Math.cos(phi)
         this.#ball.velocity.y = smash * this.#ball.speed * Math.sin(phi)
+        this.#soundsPlayer.sounds.ball.play()
     }
 
-    #collidesWithRacket(rocket) {
-        return this.#collides(
-            rocket.x, rocket.y, rocket.width, rocket.height,
-            this.#ball.x, this.#ball.y, this.#ball.side, this.#ball.side,
-        )
-    }
-
-    #collides(ax, ay, aw, ah, bx, by, bw, bh) {
-        return ax < bx + bw && ay < by + bh && bx < ax + aw && by < ay + ah
-    }
-
-    #checkTableExitCollision() {
+    #checkTableExit() {
         if (0 > this.#ball.x + this.#ball.side || this.#ball.x > this.#sceneSize.width) {
             if (this.#ball.x + this.#ball.side < 0) {
                 this.#onOutFromTable(Direction.LEFT)
@@ -66,6 +58,7 @@ export class BallCollider {
             const offset = ball.velocity.y < 0 ? 0 - ball.y : this.#sceneSize.height - (ball.y + ball.side)
             this.y += 2 * offset
             this.#ball.velocity.y *= -1
+            this.#soundsPlayer.sounds.ball.play()
         }
     }
 }

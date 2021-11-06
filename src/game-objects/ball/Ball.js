@@ -1,5 +1,6 @@
-import {GameObject} from '../core/GameObject'
-import {Direction} from '../core/Direction'
+import {GameObject} from '../../core/GameObject'
+import {Direction} from '../../core/Direction'
+import {BoundingBox} from '../../core/colliders/BoundingBox'
 
 export class Ball extends GameObject {
     side = 20
@@ -11,7 +12,7 @@ export class Ball extends GameObject {
     constructor(sceneSize) {
         super()
         this.#sceneSize = sceneSize
-
+        this.boundingBox = new BoundingBox(this.side, this.side)
         this.setup()
     }
 
