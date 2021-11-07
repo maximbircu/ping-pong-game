@@ -1,4 +1,4 @@
 export const Direction = {
     LEFT: 'LEFT',
-    RIGHT: 'RIGHT'
+    RIGHT: 'RIGHT',
 }

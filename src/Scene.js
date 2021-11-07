@@ -4,24 +4,28 @@ import {ArrowKeys, LetterKeys} from './game-objects/player/PlayerControllKeys'
 import {Direction} from './core/Direction'
 import {Ball} from './game-objects/ball/Ball'
 import {BallCollider} from './game-objects/ball/BallColider'
+import {Bot} from './game-objects/bot/Bot'
+import {Mode} from './Mode'
 
 export class Scene {
     #context
     #gameObjects = {}
     #colliders = {}
     #soundsPlayer
+    #keyListener
 
-    constructor(context, sceneSize, keyListener, soundsPlayer) {
+    constructor(context, sceneSize, keyListener, soundsPlayer, mode) {
         this.#context = context
         this.#soundsPlayer = soundsPlayer
+        this.#keyListener = keyListener
 
+        const ball = new Ball(sceneSize)
         this.#gameObjects = {
             table: new Table(sceneSize),
-            ball: new Ball(sceneSize),
+            ball: ball,
             leftPlayer: new Player(sceneSize, Direction.LEFT, LetterKeys, keyListener),
-            rightPlayer: new Player(sceneSize, Direction.RIGHT, ArrowKeys, keyListener),
+            rightPlayer: this.#createRightPlayer(sceneSize, Direction.RIGHT, ArrowKeys, mode, ball),
         }
-
 
         this.#colliders = {
             ballCollider: new BallCollider(
@@ -42,6 +46,14 @@ export class Scene {
 
     reset() {
         Object.values(this.#gameObjects).forEach((object) => object.setup())
+    }
+
+    #createRightPlayer(sceneSize, position, keys, mode, ball) {
+        if (mode === Mode.SINGLE_PLAYER) {
+            return new Player(sceneSize, position, keys, this.#keyListener)
+        } else {
+            return new Bot(sceneSize, position, ball)
+        }
     }
 
     #gameLife() {

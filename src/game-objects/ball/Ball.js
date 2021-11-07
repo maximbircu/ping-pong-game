@@ -4,7 +4,7 @@ import {BoundingBox} from '../../core/colliders/BoundingBox'
 
 export class Ball extends GameObject {
     side = 20
-    speed = 3
+    speed = 5
     velocity = {x: 0, y: 0}
 
     #sceneSize
