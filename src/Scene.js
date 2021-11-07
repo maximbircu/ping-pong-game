@@ -6,6 +6,7 @@ import {Ball} from './game-objects/ball/Ball'
 import {BallCollider} from './game-objects/ball/BallColider'
 import {Bot} from './game-objects/bot/Bot'
 import {Mode} from './Mode'
+import {FailureAnimation} from './FailureAnimation'
 
 export class Scene {
     #context
@@ -22,6 +23,7 @@ export class Scene {
         const ball = new Ball(sceneSize)
         this.#gameObjects = {
             table: new Table(sceneSize),
+            failure: new FailureAnimation(sceneSize),
             ball: ball,
             leftPlayer: new Player(sceneSize, Direction.LEFT, LetterKeys, keyListener),
             rightPlayer: this.#createRightPlayer(sceneSize, Direction.RIGHT, ArrowKeys, mode, ball),
@@ -33,7 +35,10 @@ export class Scene {
                 sceneSize,
                 soundsPlayer,
                 [this.#gameObjects.leftPlayer, this.#gameObjects.rightPlayer],
-                onBallExit,
+                (direction) => {
+                    this.#gameObjects.failure.drawFailure(direction)
+                    onBallExit(direction)
+                },
             ),
         }
         this.#gameLife()
@@ -49,9 +54,9 @@ export class Scene {
 
     #createRightPlayer(sceneSize, position, keys, mode, ball) {
         if (mode === Mode.SINGLE_PLAYER) {
-            return new Player(sceneSize, position, keys, this.#keyListener)
-        } else {
             return new Bot(sceneSize, position, ball)
+        } else {
+            return new Player(sceneSize, position, keys, this.#keyListener)
         }
     }
 

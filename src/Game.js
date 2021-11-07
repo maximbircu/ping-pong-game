@@ -46,7 +46,7 @@ export class Game {
             mode,
             (direction) => this.#onBallExit(direction),
         )
-        this.#scene.start()
+        this.#startNewRound()
     }
 
     #onBallExit(direction) {

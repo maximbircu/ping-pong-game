@@ -18,7 +18,9 @@ export class Ball extends GameObject {
 
     startMovement(direction) {
         const dir = direction === Direction.LEFT ? -1 : 1
-        this.velocity = {x: this.speed * dir, y: this.getRandomNumberBetween(-5, 5)}
+        let speed = this.speed - 3
+        this.velocity = {x: speed * dir, y: this.getRandomNumberBetween(-5, 5)}
+        console.log(this.velocity)
     }
 
     setup() {
