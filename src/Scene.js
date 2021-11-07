@@ -41,7 +41,7 @@ export class Scene {
     }
 
     reset() {
-        this.#gameObjects.forEach((object) => object.setup())
+        Object.values(this.#gameObjects).forEach((object) => object.setup())
     }
 
     #gameLife() {

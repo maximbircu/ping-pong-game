@@ -1,0 +1,12 @@
+@import "colors";
+
+.menu-button {
+  margin: 0 auto 20px;
+  width: 200px;
+  border-radius: 3px;
+  text-align: center;
+  clear: both;
+  padding: 10px;
+  background-color: rgba($light-grey, .3);
+  cursor: pointer;
+}

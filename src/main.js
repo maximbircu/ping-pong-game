@@ -17,6 +17,20 @@ const settings = {
         },
         muteButtonId: '#mute-button',
     },
+    menu: {
+        onePlayerButton: {
+            buttonId: 'button-one-player',
+            screenId: 'game-screen',
+        },
+        twoPlayersButton: {
+            buttonId: 'button-two-players',
+            screenId: 'game-screen',
+        },
+        menuButton: {
+            buttonId: 'game-menu-button',
+            screenId: 'menu-screen',
+        },
+    },
 }
-const game = new Game(settings)
-game.start()
+
+new Game(settings)

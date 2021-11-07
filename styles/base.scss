@@ -1,0 +1,15 @@
+.screen {
+  opacity: 0;
+  visibility: hidden;
+
+  // Position
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.active-screen {
+  opacity: 1;
+  visibility: visible;
+}
