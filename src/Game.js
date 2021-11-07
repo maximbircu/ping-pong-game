@@ -41,7 +41,23 @@ export class Game {
             this.#keyListener,
             this.#soundsPlayer,
             mode,
+            (direction) => this.#onBallExit(direction),
         )
         this.#scene.start()
+    }
+
+    #onBallExit(direction) {
+        console.log(direction)
+        this.#startNewRound()
+    }
+
+    #startNewRound() {
+        this.#scene.reset()
+        this.#keyListener.addKeyDownListener((key) => {
+            if (key === 'Space') {
+                this.#scene.start()
+                this.#keyListener.removeKeyDownListener(this)
+            }
+        })
     }
 }

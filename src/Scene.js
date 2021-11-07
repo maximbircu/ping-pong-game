@@ -14,7 +14,7 @@ export class Scene {
     #soundsPlayer
     #keyListener
 
-    constructor(context, sceneSize, keyListener, soundsPlayer, mode) {
+    constructor(context, sceneSize, keyListener, soundsPlayer, mode, onBallExit) {
         this.#context = context
         this.#soundsPlayer = soundsPlayer
         this.#keyListener = keyListener
@@ -33,14 +33,13 @@ export class Scene {
                 sceneSize,
                 soundsPlayer,
                 [this.#gameObjects.leftPlayer, this.#gameObjects.rightPlayer],
-                () => {
-                },
+                onBallExit,
             ),
         }
+        this.#gameLife()
     }
 
     start() {
-        this.#gameLife()
         this.#gameObjects.ball.startMovement(Direction.LEFT)
     }
 
