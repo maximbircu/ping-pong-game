@@ -4,20 +4,23 @@ import {KeyListener} from './core/KeyListener'
 import {SoundsPlayer} from './core/sounds/SoundsPlayer'
 import {GameMenu} from './menu/GameMenu'
 import {Mode} from './Mode'
+import {ScoreCounter} from './ScoreCounter'
 
 export class Game {
-    #keyListener = new KeyListener()
-    #soundsPlayer
-    #scene
-    #menu
     #settings
     #context
+    #soundsPlayer
+    #menu
+    #scoreCounter
+    #keyListener = new KeyListener()
+    #scene
 
     constructor(settings) {
         this.#settings = settings
         this.#context = ContextFactory.create(settings)
         this.#soundsPlayer = new SoundsPlayer(settings.soundPlayerSettings)
         this.#menu = new GameMenu(settings.menu, (menuItem) => this.onMenuItemSelected(menuItem))
+        this.#scoreCounter = new ScoreCounter(settings.scoreCounter)
     }
 
     onMenuItemSelected(menuItem) {
@@ -47,7 +50,7 @@ export class Game {
     }
 
     #onBallExit(direction) {
-        console.log(direction)
+        this.#scoreCounter.updateScore(direction)
         this.#startNewRound()
     }
 

@@ -31,6 +31,10 @@ const settings = {
             screenId: 'menu-screen',
         },
     },
+    scoreCounter: {
+        leftScoreContainerId: '#left-score',
+        rightScoreContainerId: '#right-score',
+    },
 }
 
 new Game(settings)
