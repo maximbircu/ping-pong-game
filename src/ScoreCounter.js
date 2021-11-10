@@ -12,8 +12,6 @@ export class ScoreCounter {
     }
 
     updateScore(direction) {
-        console.log(direction)
-        console.log(this.#rightScoreContainer)
         if (direction === Direction.LEFT) {
             this.#score.right += 1
             this.#rightScoreContainer.text(`${this.#score.right}`)

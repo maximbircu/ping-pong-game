@@ -15,24 +15,24 @@ export class Scene {
     #soundsPlayer
     #keyListener
 
-    constructor(context, sceneSize, keyListener, soundsPlayer, mode, onBallExit) {
+    constructor(context, settings, keyListener, soundsPlayer, mode, onBallExit) {
         this.#context = context
         this.#soundsPlayer = soundsPlayer
         this.#keyListener = keyListener
 
-        const ball = new Ball(sceneSize)
+        const ball = new Ball(settings.sceneSize)
         this.#gameObjects = {
-            table: new Table(sceneSize),
-            failure: new FailureAnimation(sceneSize),
+            table: new Table(settings),
+            failure: new FailureAnimation(settings),
             ball: ball,
-            leftPlayer: new Player(sceneSize, Direction.LEFT, LetterKeys, keyListener),
-            rightPlayer: this.#createRightPlayer(sceneSize, Direction.RIGHT, ArrowKeys, mode, ball),
+            leftPlayer: new Player(settings.sceneSize, Direction.LEFT, LetterKeys, keyListener),
+            rightPlayer: this.#createRightPlayer(settings.sceneSize, Direction.RIGHT, ArrowKeys, mode, ball),
         }
 
         this.#colliders = {
             ballCollider: new BallCollider(
                 this.#gameObjects.ball,
-                sceneSize,
+                settings.sceneSize,
                 soundsPlayer,
                 [this.#gameObjects.leftPlayer, this.#gameObjects.rightPlayer],
                 (direction) => {

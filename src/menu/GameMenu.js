@@ -2,8 +2,10 @@ import $ from 'jquery'
 
 export class GameMenu {
     #timelineIntroScreen = gsap.timeline({paused: false})
+    #settings
 
     constructor(settings, onMenuItemSelected) {
+        this.#settings = settings
         this.#timelineIntroScreen.staggerFrom(`#menu-screen .menu-button`, 1.3, {
             css: {scale: 0},
             autoAlpha: 0,
@@ -14,7 +16,7 @@ export class GameMenu {
         $('div.menu-button').click((event) => {
             event.preventDefault()
             const buttonId = event.target.id
-            const menuItem = Object.values(settings).find((menuItem) => menuItem.buttonId === buttonId)
+            const menuItem = this.#getMenuItem(buttonId)
 
             if (menuItem === settings.menuButton) {
                 this.#fadeToScreen(
@@ -50,5 +52,9 @@ export class GameMenu {
                 })
             },
         })
+    }
+
+    #getMenuItem(buttonId) {
+        return Object.values(this.#settings).find((menuItem) => menuItem.buttonId === buttonId)
     }
 }

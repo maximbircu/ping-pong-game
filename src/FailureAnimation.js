@@ -3,15 +3,17 @@ import {Direction} from './core/Direction'
 
 export class FailureAnimation extends GameObject {
     #sceneSize
+    #tableDividerWidth
 
     #alpha = 0
     #increasing = true
     #counts = 4
     #direction = Direction.LEFT
 
-    constructor(sceneSize) {
+    constructor(settings) {
         super()
-        this.#sceneSize = sceneSize
+        this.#sceneSize = settings.sceneSize
+        this.#tableDividerWidth = settings.tableArea.dividerWidth
     }
 
     drawFailure(direction) {
@@ -30,12 +32,12 @@ export class FailureAnimation extends GameObject {
             this.#increasing = !this.#increasing
         }
         const x1 = this.#direction === Direction.LEFT ? 0 : this.#sceneSize.width
-        const grd = context.createLinearGradient(this.#sceneSize.width / 2, 0, x1, 0)
+        const grd = context.createLinearGradient((this.#sceneSize.width / 2) - this.#tableDividerWidth, 0, x1, 0)
         grd.addColorStop(0, 'white')
         grd.addColorStop(1, `rgba(255, 0, 0, ${this.#increasing ? this.#alpha : 1 - this.#alpha})`)
         context.fillStyle = grd
 
-        const x = this.#direction === Direction.LEFT ? 0 : this.#sceneSize.width / 2
-        context.fillRect(x, 0, this.#sceneSize.width / 2, this.#sceneSize.height)
+        const x = this.#direction === Direction.LEFT ? 0 : this.#sceneSize.width / 2 + this.#tableDividerWidth
+        context.fillRect(x, 0, (this.#sceneSize.width / 2) - this.#tableDividerWidth, this.#sceneSize.height)
     }
 }

@@ -35,6 +35,9 @@ const settings = {
         leftScoreContainerId: '#left-score',
         rightScoreContainerId: '#right-score',
     },
+    tableArea: {
+        dividerWidth: 4,
+    },
 }
 
 new Game(settings)

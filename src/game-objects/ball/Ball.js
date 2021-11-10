@@ -20,7 +20,6 @@ export class Ball extends GameObject {
         const dir = direction === Direction.LEFT ? -1 : 1
         let speed = this.speed - 3
         this.velocity = {x: speed * dir, y: this.getRandomNumberBetween(-5, 5)}
-        console.log(this.velocity)
     }
 
     setup() {

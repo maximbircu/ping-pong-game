@@ -40,7 +40,7 @@ export class Game {
     #startNewGame(mode) {
         this.#scene = new Scene(
             this.#context,
-            this.#settings.sceneSize,
+            this.#settings,
             this.#keyListener,
             this.#soundsPlayer,
             mode,
