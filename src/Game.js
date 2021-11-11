@@ -5,6 +5,7 @@ import {SoundsPlayer} from './core/sounds/SoundsPlayer'
 import {GameMenu} from './menu/GameMenu'
 import {Mode} from './Mode'
 import {ScoreCounter} from './ScoreCounter'
+import {CountDownTimer} from './CountDownTimer'
 
 export class Game {
     #settings
@@ -14,6 +15,7 @@ export class Game {
     #scoreCounter
     #keyListener = new KeyListener()
     #scene
+    #countDownTimer
 
     constructor(settings) {
         this.#settings = settings
@@ -21,6 +23,7 @@ export class Game {
         this.#soundsPlayer = new SoundsPlayer(settings.soundPlayerSettings)
         this.#menu = new GameMenu(settings.menu, (menuItem) => this.onMenuItemSelected(menuItem))
         this.#scoreCounter = new ScoreCounter(settings.scoreCounter)
+        this.#countDownTimer = new CountDownTimer(settings.timer)
     }
 
     onMenuItemSelected(menuItem) {
@@ -46,21 +49,24 @@ export class Game {
             mode,
             (direction) => this.#onBallExit(direction),
         )
-        this.#startNewRound()
-    }
-
-    #onBallExit(direction) {
-        this.#scoreCounter.updateScore(direction)
-        this.#startNewRound()
-    }
-
-    #startNewRound() {
-        this.#scene.reset()
         this.#keyListener.addKeyDownListener((key) => {
             if (key === 'Space') {
                 this.#scene.start()
                 this.#keyListener.removeKeyDownListener(this)
             }
         })
+    }
+
+    #onBallExit(direction) {
+        this.#scoreCounter.updateScore(direction)
+        this.#scene.reset()
+        this.#countDownTimer.start(() => {
+            this.#scene.start()
+        })
+    }
+
+    #startNewRound() {
+        this.#scene.reset()
+        this.#scene.start()
     }
 }

@@ -38,6 +38,10 @@ const settings = {
     tableArea: {
         dividerWidth: 4,
     },
+    timer: {
+        labelId: '#count-down-timer-label',
+        intervalBetweenRoundsSec: 3,
+    },
 }
 
 new Game(settings)

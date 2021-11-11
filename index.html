@@ -24,18 +24,19 @@
     </audio>
 
     <div class="game-container">
-        <section id="menu-screen" class="screen active-screen">
+        <section id="menu-screen" class="screen">
             <div id="button-one-player" class="menu-button">1 Player</div>
             <div id="button-two-players" class="menu-button">2 Players</div>
         </section>
 
-        <section id="game-screen" class="screen">
+        <section id="game-screen" class="screen active-screen">
+            <div id="count-down-timer-container"><span id="count-down-timer-label">&nbsp;</span></div>
             <div id="score">
                 <span id="left-score">0</span> : <span id="right-score">0</span>
             </div>
             <canvas id="game-canvas"></canvas>
 
-            <div id="game-menu-button" class="menu-button">Restart Game</div>
+            <div id="game-menu-button" class="menu-button">Exit</div>
         </section>
     </div>
 </body>
