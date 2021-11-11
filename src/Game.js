@@ -1,11 +1,11 @@
 import {Scene} from './Scene'
 import {ContextFactory} from './ContextFactory'
 import {KeyListener} from './core/KeyListener'
-import {SoundsPlayer} from './core/sounds/SoundsPlayer'
 import {GameMenu} from './menu/GameMenu'
 import {Mode} from './Mode'
 import {ScoreCounter} from './ScoreCounter'
 import {CountDownTimer} from './CountDownTimer'
+import {GameSoundsPlayer} from './GameSoundsPlayer'
 
 export class Game {
     #settings
@@ -20,7 +20,7 @@ export class Game {
     constructor(settings) {
         this.#settings = settings
         this.#context = ContextFactory.create(settings)
-        this.#soundsPlayer = new SoundsPlayer(settings.soundPlayerSettings)
+        this.#soundsPlayer = new GameSoundsPlayer(settings.soundPlayerSettings)
         this.#menu = new GameMenu(settings.menu, (menuItem) => this.onMenuItemSelected(menuItem))
         this.#scoreCounter = new ScoreCounter(settings.scoreCounter)
         this.#countDownTimer = new CountDownTimer(settings.timer)

@@ -24,19 +24,25 @@
     </audio>
 
     <div class="game-container">
-        <section id="menu-screen" class="screen">
-            <div id="button-one-player" class="menu-button">1 Player</div>
-            <div id="button-two-players" class="menu-button">2 Players</div>
+        <section id="main-menu-screen" class="screen active-screen">
+            <div id="button-one-player" class="menu-button main-menu-button">1 Player</div>
+            <div id="button-two-players" class="menu-button main-menu-button">2 Players</div>
         </section>
 
-        <section id="game-screen" class="screen active-screen">
+        <section id="game-screen" class="screen">
+            <section id="game-menu">
+                <div class="game-menu-button">
+                    <a href="#" id="mute-button" class="speaker"><span></span></a><br/>
+                </div>
+                <div id="go-to-main-menu-button" class="menu-button game-menu-button">
+                    <img src="/assets/close_white_24dp.svg" alt="close">
+                </div>
+            </section>
             <div id="count-down-timer-container"><span id="count-down-timer-label">&nbsp;</span></div>
             <div id="score">
                 <span id="left-score">0</span> : <span id="right-score">0</span>
             </div>
             <canvas id="game-canvas"></canvas>
-
-            <div id="game-menu-button" class="menu-button">Exit</div>
         </section>
     </div>
 </body>

@@ -27,8 +27,8 @@ const settings = {
             screenId: 'game-screen',
         },
         menuButton: {
-            buttonId: 'game-menu-button',
-            screenId: 'menu-screen',
+            buttonId: 'go-to-main-menu-button',
+            screenId: 'main-menu-screen',
         },
     },
     scoreCounter: {

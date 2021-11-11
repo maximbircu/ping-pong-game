@@ -6,20 +6,17 @@ export class GameMenu {
 
     constructor(settings, onMenuItemSelected) {
         this.#settings = settings
-        this.#timelineIntroScreen.staggerFrom(`#menu-screen .menu-button`, 1.3, {
+        this.#timelineIntroScreen.staggerFrom(`#main-menu-screen .menu-button`, 1.3, {
             css: {scale: 0},
             autoAlpha: 0,
             ease: Elastic.easeOut,
         }, .1)
         this.#timelineIntroScreen.restart()
 
-        onMenuItemSelected(settings.onePlayerButton)
-
         $('div.menu-button').click((event) => {
             event.preventDefault()
-            const buttonId = event.target.id
+            const buttonId = event.currentTarget.id
             const menuItem = this.#getMenuItem(buttonId)
-
             if (menuItem === settings.menuButton) {
                 this.#fadeToScreen(
                     menuItem.screenId, () => {
