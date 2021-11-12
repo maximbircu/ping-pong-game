@@ -3,10 +3,14 @@ import $ from 'jquery'
 export class CountDownTimer {
     #timerContainer
     #interval
+    #soundPlayer
 
-    constructor(settings) {
+    #handler
+
+    constructor(settings, soundPlayer) {
         this.#timerContainer = $(settings.labelId)
         this.#interval = settings.intervalBetweenRoundsSec
+        this.#soundPlayer = soundPlayer
     }
 
     start(onFinish) {
@@ -14,7 +18,9 @@ export class CountDownTimer {
         const tick = () => {
             if (count === -1) {
                 onFinish()
-                clearInterval(handler)
+                clearInterval(this.#handler)
+            } else {
+                this.#soundPlayer.sounds.tick.play()
             }
             if (count === 0) {
                 this.#timerContainer.text('Start!')
@@ -26,6 +32,10 @@ export class CountDownTimer {
             count -= 1
         }
         tick()
-        const handler = setInterval(() => tick(), 1000)
+        this.#handler = setInterval(() => tick(), 1000)
+    }
+
+    stop() {
+        clearInterval(this.#handler)
     }
 }

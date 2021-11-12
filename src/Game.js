@@ -23,7 +23,7 @@ export class Game {
         this.#soundsPlayer = new GameSoundsPlayer(settings.soundPlayerSettings)
         this.#menu = new GameMenu(settings.menu, (menuItem) => this.onMenuItemSelected(menuItem))
         this.#scoreCounter = new ScoreCounter(settings.scoreCounter)
-        this.#countDownTimer = new CountDownTimer(settings.timer)
+        this.#countDownTimer = new CountDownTimer(settings.timer, this.#soundsPlayer)
     }
 
     onMenuItemSelected(menuItem) {
@@ -35,7 +35,7 @@ export class Game {
             this.#startNewGame(Mode.TWO_PLAYERS)
             break
         case this.#settings.menu.menuButton:
-            this.#scene.reset()
+            this.#resetGame()
             break
         }
     }
@@ -49,6 +49,7 @@ export class Game {
             mode,
             (direction) => this.#onBallExit(direction),
         )
+        this.#soundsPlayer.sounds.background.play()
         this.#keyListener.addKeyDownListener((key) => {
             if (key === 'Space') {
                 this.#scene.start()
@@ -58,6 +59,7 @@ export class Game {
     }
 
     #onBallExit(direction) {
+        this.#soundsPlayer.sounds.win.play()
         this.#scoreCounter.updateScore(direction)
         this.#scene.reset()
         this.#countDownTimer.start(() => {
@@ -65,8 +67,10 @@ export class Game {
         })
     }
 
-    #startNewRound() {
+    #resetGame() {
+        this.#countDownTimer.stop()
+        this.#soundsPlayer.stopAll()
+        this.#scoreCounter.reset()
         this.#scene.reset()
-        this.#scene.start()
     }
 }

@@ -12,4 +12,10 @@ export class SoundsPlayer {
             this.sounds[soundKey] = new Sound(sounds[soundKey])
         })
     }
+
+    stopAll() {
+        Object.values(this.sounds).forEach((sound) => {
+            sound.stop()
+        })
+    }
 }

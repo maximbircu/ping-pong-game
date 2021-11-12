@@ -7,8 +7,12 @@ const settings = {
     sceneSize: new SceneSize(700, 600),
     soundPlayerSettings: {
         sounds: {
-            win: {id: 'win-audio'},
+            win: {
+                id: 'win-audio',
+                volume: 0.2,
+            },
             ball: {id: 'ball-audio'},
+            tick: {id: 'tick'},
             background: {
                 id: 'background',
                 volume: 0.1,

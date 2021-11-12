@@ -14,4 +14,9 @@ export class Sound {
         this.#soundObject.loop = this.#loop
         this.#soundObject.play()
     }
+
+    stop() {
+        this.#soundObject.pause()
+        this.#soundObject.currentTime = 0
+    }
 }

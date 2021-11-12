@@ -20,4 +20,8 @@ export class ScoreCounter {
             this.#leftScoreContainer.text(`${this.#score.left}`)
         }
     }
+
+    reset() {
+        this.#score = {left: 0, right: 0}
+    }
 }

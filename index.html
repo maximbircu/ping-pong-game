@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link href="dest/css/main.bundle.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -14,13 +15,17 @@
 <body>
     <!-- Audio tracks-->
     <audio id="ball-audio">
-        <source src="assets/ball.mp3" type="audio/mpeg"/>
+        <source src="assets/sounds/ball.mp3" type="audio/mpeg"/>
     </audio>
     <audio id="win-audio">
-        <source src="assets/applause.mp3" type="audio/mpeg"/>
+        <source src="assets/sounds/applause.mp3" type="audio/mpeg"/>
     </audio>
     <audio id="background">
-        <source src="assets/background.mp3" type="audio/mpeg"/>
+        <source src="assets/sounds/background.mp3" type="audio/mpeg"/>
+    </audio>
+
+    <audio id="tick">
+        <source src="assets/sounds/tick.mp3" type="audio/mpeg"/>
     </audio>
 
     <div class="game-container">
@@ -35,7 +40,7 @@
                     <a href="#" id="mute-button" class="speaker"><span></span></a><br/>
                 </div>
                 <div id="go-to-main-menu-button" class="menu-button game-menu-button">
-                    <img src="/assets/close_white_24dp.svg" alt="close">
+                    <img src="/assets/images/close_white_24dp.svg" alt="close">
                 </div>
             </section>
             <div id="count-down-timer-container"><span id="count-down-timer-label">&nbsp;</span></div>
