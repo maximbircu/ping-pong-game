@@ -3,15 +3,19 @@ import {Direction} from '../../core/Direction'
 import {BoundingBox} from '../../core/colliders/BoundingBox'
 
 export class Ball extends GameObject {
-    side = 20
-    speed = 5
+    side
+    speed
     velocity = {x: 0, y: 0}
 
     #sceneSize
+    #settings
 
-    constructor(sceneSize) {
+    constructor(sceneSize, settings) {
         super()
         this.#sceneSize = sceneSize
+        this.#settings = settings
+        this.side = settings.side
+        this.speed = settings.speed
         this.boundingBox = new BoundingBox(this.side, this.side)
         this.setup()
     }
@@ -34,7 +38,7 @@ export class Ball extends GameObject {
     }
 
     render(context) {
-        context.fillStyle = '#ff0000'
+        context.fillStyle = this.#settings.color
         context.fillRect(this.x, this.y, this.side, this.side)
     }
 

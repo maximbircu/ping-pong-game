@@ -9,11 +9,13 @@ export class FailureAnimation extends GameObject {
     #increasing = true
     #counts = 4
     #direction = Direction.LEFT
+    #settings
 
-    constructor(settings) {
+    constructor(sceneSize, dividerWidth, settings) {
         super()
-        this.#sceneSize = settings.sceneSize
-        this.#tableDividerWidth = settings.tableArea.dividerWidth
+        this.#sceneSize = sceneSize
+        this.#tableDividerWidth = dividerWidth
+        this.#settings = settings
     }
 
     drawFailure(direction) {

@@ -3,14 +3,13 @@ import {Racket} from '../Racket'
 export class Bot extends Racket {
     #sceneSize
     #ball
+    #complexity
 
-    /** Any real number between 0 and 1 where 0 is super easy and 1 is impossible **/
-    #complexity = 0.05
-
-    constructor(sceneSize, position, ball) {
-        super(sceneSize, position)
+    constructor(sceneSize, position, ball, settings) {
+        super(sceneSize, position, settings.racket)
         this.#sceneSize = sceneSize
         this.#ball = ball
+        this.#complexity = settings.complexity
     }
 
     update() {

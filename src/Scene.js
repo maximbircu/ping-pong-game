@@ -10,6 +10,7 @@ import {FailureAnimation} from './FailureAnimation'
 
 export class Scene {
     #context
+    #settings
     #gameObjects = {}
     #colliders = {}
     #soundsPlayer
@@ -17,16 +18,18 @@ export class Scene {
 
     constructor(context, settings, keyListener, soundsPlayer, mode, onBallExit) {
         this.#context = context
+        this.#settings = settings
         this.#soundsPlayer = soundsPlayer
         this.#keyListener = keyListener
 
-        const ball = new Ball(settings.sceneSize)
+        const sceneSize = settings.sceneSize
+        const ball = new Ball(sceneSize, settings.ball)
         this.#gameObjects = {
-            table: new Table(settings),
-            failure: new FailureAnimation(settings),
+            table: new Table(sceneSize, settings.table),
+            failure: new FailureAnimation(sceneSize, settings.table.dividerWidth, settings.failureAnimation),
             ball: ball,
-            leftPlayer: new Player(settings.sceneSize, Direction.LEFT, LetterKeys, keyListener),
-            rightPlayer: this.#createRightPlayer(settings.sceneSize, Direction.RIGHT, ArrowKeys, mode, ball),
+            leftPlayer: new Player(sceneSize, Direction.LEFT, LetterKeys, keyListener, settings.leftPlayer),
+            rightPlayer: this.#createRightPlayer(sceneSize, Direction.RIGHT, ArrowKeys, mode, ball),
         }
 
         this.#colliders = {
@@ -54,9 +57,9 @@ export class Scene {
 
     #createRightPlayer(sceneSize, position, keys, mode, ball) {
         if (mode === Mode.SINGLE_PLAYER) {
-            return new Bot(sceneSize, position, ball)
+            return new Bot(sceneSize, position, ball, this.#settings.bot)
         } else {
-            return new Player(sceneSize, position, keys, this.#keyListener)
+            return new Player(sceneSize, position, keys, this.#keyListener, this.#settings.rightPlayer)
         }
     }
 

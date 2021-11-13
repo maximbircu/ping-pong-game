@@ -6,8 +6,8 @@ export class Player extends Racket {
     #controlKeys
     #keyListener
 
-    constructor(sceneSize, position, controlKeys, keyListener) {
-        super(sceneSize, position)
+    constructor(sceneSize, position, controlKeys, keyListener, settings) {
+        super(sceneSize, position, settings.racket)
         this.#sceneSize = sceneSize
         this.#controlKeys = controlKeys
         this.#keyListener = keyListener
