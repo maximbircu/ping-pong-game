@@ -1,3 +1,5 @@
+@import "colors";
+
 #game-screen {
   height: auto;
   margin-top: -30px;
@@ -6,7 +8,7 @@
 #game-canvas {
   margin: 0 auto 20px;
   display: block;
-  box-shadow: 1px 0 18px #dae3e7;
+  box-shadow: 1px 0 18px var(--game-canvas-shadow-color);
 }
 
 #score {
@@ -14,7 +16,7 @@
   width: 200px;
   text-align: center;
   font-size: 3.5em;
-  color: #545e69;
+  color: var(--game-score-text-color);
   font-weight: 100;
 }
 
@@ -22,7 +24,7 @@
   margin: 0 auto 20px;
   width: 200px;
   text-align: center;
-  color: #434343;
+  color: var(--game-countdown-timer-text-color);
   font-size: 2em;
   font-weight: 100;
 

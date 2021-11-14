@@ -1,9 +1,17 @@
 :root {
   --background-color: #fff;
   --main-text-color: #434343;
+  --game-canvas-shadow-color: #dae3e7;
+  --game-score-text-color: #545e69;
+  --game-menu-icon-color: #aca79a;
+  --game-countdown-timer-text-color: #434343;
 }
 
 :root[data-theme='dark'] {
   --background-color: #434343;
   --main-text-color: #434343;
+  --game-canvas-shadow-color: #212121;
+  --game-score-text-color: #fff;
+  --game-menu-icon-color: #fff;
+  --game-countdown-timer-text-color: #fff;
 }

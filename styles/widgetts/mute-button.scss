@@ -11,7 +11,7 @@
     display: block;
     width: 8px;
     height: 8px;
-    background: #aca79a;
+    background: var(--game-menu-icon-color);
     margin: 11px 0 0 2px;
 
     &:after {
@@ -20,7 +20,7 @@
       width: 0;
       height: 0;
       border-style: solid;
-      border-color: transparent #aca79a transparent transparent;
+      border-color: transparent var(--game-menu-icon-color) transparent transparent;
       border-width: 10px 14px 10px 15px;
       left: -13px;
       top: 5px;
@@ -34,7 +34,7 @@
       width: 5px;
       height: 5px;
       border-style: double;
-      border-color: #aca79a;
+      border-color: var(--game-menu-icon-color);
       border-width: 7px 7px 0 0;
       left: 18px;
       top: 9px;

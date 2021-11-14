@@ -17,10 +17,10 @@ const colors = {
         racketColor: '#434343',
     },
     dark: {
-        tableColor: '#fff',
-        tableDividerColor: '#000',
-        ballColor: '#000',
-        racketColor: '#ff0000',
+        tableColor: '#434343',
+        tableDividerColor: '#fff',
+        ballColor: '#66cb8c',
+        racketColor: '#fff',
     },
 }
 

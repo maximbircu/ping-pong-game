@@ -27,7 +27,7 @@
     height: 29px;
     width: 3px;
     margin-left: 12px;
-    background-color: #aca79a;
+    background-color: var(--game-menu-icon-color);
     transform: rotate(45deg);
     Z-index: 1;
   }
@@ -35,9 +35,19 @@
   .close-button-second-line {
     height: 29px;
     width: 3px;
-    background-color: #aca79a;
+    background-color: var(--game-menu-icon-color);
     transform: rotate(90deg);
     Z-index: 2;
   }
 }
+
+#github-button {
+  margin-top: 3px;
+  margin-right: 9px;
+  .icss {
+    color: var(--game-menu-icon-color);
+    font-size: 1.7em;
+  }
+}
+
 

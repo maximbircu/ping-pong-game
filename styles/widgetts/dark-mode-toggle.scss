@@ -1,7 +1,7 @@
 :root {
   --dark-mode-toggle-page-background: #fff;
   --dark-mode-toggle-icon-focused: #00b7c6;
-  --dark-mode-toggle-icon-color: #aca79a;
+  --dark-mode-toggle-icon-color: var(--game-menu-icon-color);
 
   --size: 25px
 }
