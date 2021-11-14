@@ -6,7 +6,7 @@
 #game-canvas {
   margin: 0 auto 20px;
   display: block;
-  background: white;
+  box-shadow: 1px 0 18px #dae3e7;
 }
 
 #score {
@@ -14,7 +14,7 @@
   width: 200px;
   text-align: center;
   font-size: 3.5em;
-  color: white;
+  color: #545e69;
   font-weight: 100;
 }
 
@@ -22,21 +22,11 @@
   margin: 0 auto 20px;
   width: 200px;
   text-align: center;
+  color: #434343;
   font-size: 2em;
-  color: white;
   font-weight: 100;
-}
 
-#count-down-timer-container span:empty:before {
-  content: "\200b";
-}
-
-#overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
+  span:empty:before {
+    content: "\200b";
+  }
 }

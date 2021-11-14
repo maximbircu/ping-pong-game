@@ -5,11 +5,11 @@ export class Bot extends Racket {
     #ball
     #complexity
 
-    constructor(sceneSize, position, ball, settings) {
-        super(sceneSize, position, settings.racket)
-        this.#sceneSize = sceneSize
+    constructor(position, ball, settings, playerSettings) {
+        super(position, settings, playerSettings.racket)
         this.#ball = ball
-        this.#complexity = settings.complexity
+        this.#sceneSize = settings.sceneSize
+        this.#complexity = settings.bot.complexity
     }
 
     update() {

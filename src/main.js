@@ -1,11 +1,27 @@
 import '../styles/main.scss'
 import {Game} from './Game'
 import {SceneSize} from './core/SceneSize'
+import {ThemeController} from './ThemeController'
 
-const racketSettings = {
-    color: '#000',
-    width: 20,
-    height: 100,
+const themeController = new ThemeController({
+    themeToggleClass: '.js__dark-mode-toggle',
+    readonly: false,
+    defaultTheme: 'dark',
+})
+
+const colors = {
+    light: {
+        tableColor: '#fff',
+        tableDividerColor: '#434343',
+        ballColor: '#66cb8c',
+        racketColor: '#434343',
+    },
+    dark: {
+        tableColor: '#fff',
+        tableDividerColor: '#000',
+        ballColor: '#000',
+        racketColor: '#ff0000',
+    },
 }
 
 const settings = {
@@ -45,33 +61,30 @@ const settings = {
         leftScoreContainerId: '#left-score',
         rightScoreContainerId: '#right-score',
     },
-    table: {
-        dividerWidth: 4,
-        dividerColor: '#000',
-        tableColor: '#fff',
-    },
-    ball: {
-        color: '#ff0000',
-        side: 20,
-        speed: 5,
-    },
+    table: {dividerWidth: 3},
+    ball: {side: 20, speed: 5},
     failureAnimation: {},
     leftPlayer: {
         speed: 7,
-        racket: racketSettings,
+        racket: {width: 20, height: 100},
     },
     rightPlayer: {
         speed: 7,
-        racket: racketSettings,
+        racket: {width: 20, height: 100},
     },
     bot: {
         complexity: 0.05, /** Any real number between 0 and 1 where 0 is super easy and 1 is impossible **/
-        racket: racketSettings,
+        racket: {width: 20, height: 100},
     },
     timer: {
         labelId: '#count-down-timer-label',
         intervalBetweenRoundsSec: 3,
     },
+    colors: colors[themeController.theme],
 }
+
+themeController.addThemeRefreshListener((theme) => {
+    settings.colors = colors[theme]
+})
 
 new Game(settings)

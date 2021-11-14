@@ -13,6 +13,8 @@ export class GameMenu {
         }, .1)
         this.#timelineIntroScreen.restart()
 
+        onMenuItemSelected(this.#getMenuItem('button-two-players'))
+
         $('div.menu-button').click((event) => {
             event.preventDefault()
             const buttonId = event.currentTarget.id

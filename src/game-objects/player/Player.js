@@ -1,14 +1,15 @@
 import {Racket} from '../Racket'
 
 export class Player extends Racket {
-    #speed = 7
+    #speed
     #sceneSize
     #controlKeys
     #keyListener
 
-    constructor(sceneSize, position, controlKeys, keyListener, settings) {
-        super(sceneSize, position, settings.racket)
-        this.#sceneSize = sceneSize
+    constructor(position, controlKeys, keyListener, settings, playerSettings) {
+        super(position, settings, playerSettings.racket)
+        this.#speed = playerSettings.speed
+        this.#sceneSize = settings.sceneSize
         this.#controlKeys = controlKeys
         this.#keyListener = keyListener
     }

@@ -1,12 +1,10 @@
 import {GameObject} from '../core/GameObject'
 
 export class Table extends GameObject {
-    #sceneSize
     #settings
 
-    constructor(sceneSize, settings) {
+    constructor(settings) {
         super()
-        this.#sceneSize = sceneSize
         this.#settings = settings
     }
 
@@ -15,21 +13,24 @@ export class Table extends GameObject {
     }
 
     render(context) {
-        context.fillStyle = this.#settings.tableColor
-        context.fillRect(0, 0, this.#sceneSize.width, this.#sceneSize.height)
+        const sceneSize = this.#settings.sceneSize
+        context.fillStyle = this.#settings.colors.tableColor
+        context.fillRect(0, 0, sceneSize.width, sceneSize.height)
 
         this.#drawDivider(context)
     }
 
     #drawDivider(context) {
-        context.fillStyle = this.#settings.dividerColor
+        const sceneSize = this.#settings.sceneSize
+        const dividerWidth = this.#settings.table.dividerWidth
+        context.fillStyle = this.#settings.colors.tableDividerColor
 
-        const step = this.#sceneSize.height / 15
+        const step = sceneSize.height / 15
 
-        const x = (this.#sceneSize.width - this.#settings.dividerWidth) * 0.5
+        const x = (sceneSize.width - dividerWidth) * 0.5
         let y = 0
-        while (y < this.#sceneSize.height) {
-            context.fillRect(x, y + step * 0.25, this.#settings.dividerWidth, step * 0.5)
+        while (y < sceneSize.height) {
+            context.fillRect(x, y + step * 0.25, dividerWidth, step * 0.5)
             y += step
         }
     }

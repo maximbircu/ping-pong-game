@@ -10,6 +10,7 @@ export default {
         scss({
             output: 'dest/css/main.bundle.css',
             failOnError: true,
+            watch: 'styles',
         }),
     ],
 }

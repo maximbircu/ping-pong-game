@@ -7,33 +7,32 @@ export class Racket extends GameObject {
     width
     height
 
-    #sceneSize
     #settings
     #distanceFromEdge = () => this.width
 
-    constructor(sceneSize, position, settings) {
+    constructor(position, settings, racketSettings) {
         super()
-        this.#sceneSize = sceneSize
-        this.#settings = settings
         this.position = position
-        this.width = settings.width
-        this.height = settings.height
+        this.#settings = settings
+        this.width = racketSettings.width
+        this.height = racketSettings.height
         this.boundingBox = new BoundingBox(this.width, this.height)
         this.setup()
     }
 
     setup() {
+        const sceneSize = this.#settings.sceneSize
         if (this.position === Direction.LEFT) {
             this.x = this.#distanceFromEdge()
         } else {
-            this.x = this.#sceneSize.width - (this.#distanceFromEdge() + this.width)
+            this.x = sceneSize.width - (this.#distanceFromEdge() + this.width)
         }
 
-        this.y = (this.#sceneSize.height - this.height) / 2
+        this.y = (sceneSize.height - this.height) / 2
     }
 
     render(context) {
-        context.fillStyle = this.#settings.color
+        context.fillStyle = this.#settings.colors.racketColor
         context.fillRect(this.x, this.y, this.width, this.height)
     }
 }

@@ -23,12 +23,12 @@ export class Scene {
         this.#keyListener = keyListener
 
         const sceneSize = settings.sceneSize
-        const ball = new Ball(sceneSize, settings.ball)
+        const ball = new Ball(settings)
         this.#gameObjects = {
-            table: new Table(sceneSize, settings.table),
-            failure: new FailureAnimation(sceneSize, settings.table.dividerWidth, settings.failureAnimation),
+            table: new Table(settings),
+            failure: new FailureAnimation(settings),
             ball: ball,
-            leftPlayer: new Player(sceneSize, Direction.LEFT, LetterKeys, keyListener, settings.leftPlayer),
+            leftPlayer: new Player(Direction.LEFT, LetterKeys, keyListener, settings, settings.leftPlayer),
             rightPlayer: this.#createRightPlayer(sceneSize, Direction.RIGHT, ArrowKeys, mode, ball),
         }
 
@@ -57,9 +57,9 @@ export class Scene {
 
     #createRightPlayer(sceneSize, position, keys, mode, ball) {
         if (mode === Mode.SINGLE_PLAYER) {
-            return new Bot(sceneSize, position, ball, this.#settings.bot)
+            return new Bot(position, ball, this.#settings, this.#settings.bot)
         } else {
-            return new Player(sceneSize, position, keys, this.#keyListener, this.#settings.rightPlayer)
+            return new Player(position, keys, this.#keyListener, this.#settings, this.#settings.rightPlayer)
         }
     }
 

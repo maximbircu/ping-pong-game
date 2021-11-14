@@ -1,2 +1,9 @@
-$dark-blue: #2c3e50;
-$light-grey: #ecf0f1;
+:root {
+  --background-color: #fff;
+  --main-text-color: #434343;
+}
+
+:root[data-theme='dark'] {
+  --background-color: #434343;
+  --main-text-color: #434343;
+}

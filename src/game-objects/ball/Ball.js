@@ -6,16 +6,15 @@ export class Ball extends GameObject {
     side
     speed
     velocity = {x: 0, y: 0}
+    boundingBox
 
-    #sceneSize
     #settings
 
-    constructor(sceneSize, settings) {
+    constructor(settings) {
         super()
-        this.#sceneSize = sceneSize
         this.#settings = settings
-        this.side = settings.side
-        this.speed = settings.speed
+        this.side = settings.ball.side
+        this.speed = settings.ball.speed
         this.boundingBox = new BoundingBox(this.side, this.side)
         this.setup()
     }
@@ -27,8 +26,9 @@ export class Ball extends GameObject {
     }
 
     setup() {
-        this.x = (this.#sceneSize.width - this.side) / 2
-        this.y = (this.#sceneSize.height - this.side) / 2
+        const sceneSize = this.#settings.sceneSize
+        this.x = (sceneSize.width - this.side) / 2
+        this.y = (sceneSize.height - this.side) / 2
         this.velocity = {x: 0, y: 0}
     }
 
@@ -38,7 +38,7 @@ export class Ball extends GameObject {
     }
 
     render(context) {
-        context.fillStyle = this.#settings.color
+        context.fillStyle = this.#settings.colors.ballColor
         context.fillRect(this.x, this.y, this.side, this.side)
     }
 

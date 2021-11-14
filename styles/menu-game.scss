@@ -1,0 +1,43 @@
+@import "widgetts/mute-button", "widgetts/dark-mode-toggle";
+
+#game-menu {
+  display: flex;
+  align-content: baseline;
+  justify-content: end;
+  margin-right: 100px;
+}
+
+.game-menu-button {
+  display: inline-block;
+  margin-right: 8px;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+  }
+}
+
+#go-to-main-menu-button {
+  #close-button {
+    width: 29px;
+    height: 29px;
+  }
+
+  .close-button-first-line {
+    height: 29px;
+    width: 3px;
+    margin-left: 12px;
+    background-color: #aca79a;
+    transform: rotate(45deg);
+    Z-index: 1;
+  }
+
+  .close-button-second-line {
+    height: 29px;
+    width: 3px;
+    background-color: #aca79a;
+    transform: rotate(90deg);
+    Z-index: 2;
+  }
+}
+
