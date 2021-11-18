@@ -6,6 +6,7 @@ import {Mode} from './Mode'
 import {ScoreCounter} from './ScoreCounter'
 import {CountDownTimer} from './CountDownTimer'
 import {GameSoundsPlayer} from './GameSoundsPlayer'
+import {Direction} from './core/Direction'
 
 export class Game {
     #settings
@@ -52,7 +53,7 @@ export class Game {
         this.#soundsPlayer.sounds.background.play()
         this.#keyListener.addKeyDownListener((key) => {
             if (key === 'Space') {
-                this.#scene.start()
+                this.#scene.start(Direction.LEFT)
                 this.#keyListener.removeKeyDownListener(this)
             }
         })
@@ -63,7 +64,7 @@ export class Game {
         this.#scoreCounter.updateScore(direction)
         this.#scene.reset()
         this.#countDownTimer.start(() => {
-            this.#scene.start()
+            this.#scene.start(direction)
         })
     }
 

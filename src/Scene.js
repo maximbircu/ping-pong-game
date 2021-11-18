@@ -47,8 +47,8 @@ export class Scene {
         this.#gameLife()
     }
 
-    start() {
-        this.#gameObjects.ball.startMovement(Direction.LEFT)
+    start(direction) {
+        this.#gameObjects.ball.startMovement(direction)
     }
 
     reset() {

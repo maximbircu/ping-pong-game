@@ -9,15 +9,13 @@ export class ThemeController {
     constructor(settings) {
         this.#settings = settings
         this.#refreshTheme()
-        if (settings.readOnly === false) {
-            const toggle = $(settings.themeToggleClass)
-            toggle.prop('checked', this.theme === 'light')
-            toggle.click((event) => {
-                this.#cookie.set('theme', ThemeController.#getThemeOpposite(this.theme))
-                this.#refreshTheme()
-            })
-            toggle.mousedown((event) => event.preventDefault())
-        }
+        const toggle = $(settings.themeToggleClass)
+        toggle.prop('checked', this.theme === 'light')
+        toggle.click((event) => {
+            this.#cookie.set('theme', ThemeController.#getThemeOpposite(this.theme))
+            this.#refreshTheme()
+        })
+        toggle.mousedown((event) => event.preventDefault())
     }
 
     #refreshTheme() {

@@ -4,13 +4,17 @@
 
 .main-menu-button {
   margin: 0 auto 20px;
-  border: 1px solid #32babc;
+  border: 1px solid var(--game-menu-button-border-color);
   border-radius: 30px;
   width: 200px;
   text-align: center;
-  color: #3AAA64;
+  color: var(--game-menu-button-color);
   padding: 15px;
-  background-color: #fff;
+  background-color: transparent;
   cursor: pointer;
   font: normal normal normal 1em helveticaneuew01-55roma, sans-serif;
+}
+
+.main-menu-button:hover {
+  color: #3AAA64;
 }

@@ -5,7 +5,6 @@ import {ThemeController} from './ThemeController'
 
 const themeController = new ThemeController({
     themeToggleClass: '.js__dark-mode-toggle',
-    readonly: false,
     defaultTheme: 'dark',
 })
 
@@ -37,7 +36,7 @@ const settings = {
             tick: {id: 'tick'},
             background: {
                 id: 'background',
-                volume: 0.1,
+                volume: 0.3,
                 loop: true,
             },
         },

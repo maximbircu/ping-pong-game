@@ -1,10 +1,12 @@
 @import "widgetts/mute-button", "widgetts/dark-mode-toggle";
 
 #game-menu {
-  display: flex;
-  align-content: baseline;
-  justify-content: end;
-  margin-right: 100px;
+  .right-group {
+    float: right;
+    display: inline-block;
+    justify-content: end;
+    margin-right: 100px;
+  }
 }
 
 .game-menu-button {
@@ -18,6 +20,7 @@
 }
 
 #go-to-main-menu-button {
+  margin-left: 100px;
   #close-button {
     width: 29px;
     height: 29px;

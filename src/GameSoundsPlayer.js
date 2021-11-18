@@ -9,7 +9,6 @@ export class GameSoundsPlayer extends SoundsPlayer {
 
         const muteButton = $(settings.muteButtonId)
         muteButton.click((event) => {
-            console.log(event)
             event.preventDefault()
             this.#isMuted = !this.#isMuted
             document.querySelectorAll('audio').forEach((elem) => elem.muted = this.#isMuted)

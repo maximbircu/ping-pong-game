@@ -5,6 +5,8 @@
   --game-score-text-color: #545e69;
   --game-menu-icon-color: #aca79a;
   --game-countdown-timer-text-color: #434343;
+  --game-menu-button-color: #3AAA64;
+  --game-menu-button-border-color: #32babc;
 }
 
 :root[data-theme='dark'] {
@@ -14,4 +16,6 @@
   --game-score-text-color: #fff;
   --game-menu-icon-color: #fff;
   --game-countdown-timer-text-color: #fff;
+  --game-menu-button-color: #dadada;
+  --game-menu-button-border-color: #dadada;
 }

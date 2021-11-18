@@ -2,7 +2,15 @@
 
 A JavaScript ES6 playground in form of a simple ping-pong game (just for fun)
 
-More details to be added soon...
+I embedded it in my personal website https://www.maximbircu.com/ping-pong.html
+
+![](https://user-images.githubusercontent.com/12527390/142482996-1aecf4d4-bd63-496f-a6a7-61acf3f7b26a.gif)
+
+### Commands
+
+1. ```Bash npm run build``` - to build the project
+2. ```Bash npm run dev``` - to attach the watch on the src files during development
+3. ```Bash npm run lint``` - to run the lint
 
 License
 -------
